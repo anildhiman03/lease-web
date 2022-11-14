@@ -18,7 +18,7 @@ class m130524_201442_init extends Migration
             'server_model' => $this->string()->notNull(),
             'server_ram' => $this->integer()->notNull(),
             'server_hard_disk_type' => $this->string()->notNull(),
-            'server_hard_disk_space' => $this->int(32)->notNull(),
+            'server_hard_disk_space' => $this->integer(32)->notNull(),
             'server_price' => $this->double()->notNull(),
             'server_location_id' => $this->integer()->notNull(),
             'server_created_at' => $this->datetime()->notNull(),
