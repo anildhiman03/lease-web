@@ -31,6 +31,16 @@ export class LocationsService {
   }
 
   /**
+   * list all record
+   */
+  listAll(): Observable<any> {
+    return this.httpClient.get(`${this.apiServer}/list-all`, this.httpOptions)
+      .pipe(
+        catchError(this.errorHandler)
+      );
+  }
+
+  /**
    * handle error message
    * @param error to pass err
    */

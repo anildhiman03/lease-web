@@ -46,6 +46,7 @@ class LocationController extends Controller {
         $behaviors['authenticator']['except'] = [
             'options',
             'list',
+            'list-all',
         ];
 
         return $behaviors;
@@ -75,6 +76,20 @@ class LocationController extends Controller {
         $query->select("location_id,location_name");
         return new ActiveDataProvider([
             'query' => $query
+        ]);
+    }
+
+    /**
+     * List all Locations
+     * @return ActiveDataProvider
+     */
+    public function actionListAll()
+    {
+        $query = Locations::find();
+        $query->select("location_id,location_name");
+        return new ActiveDataProvider([
+            'query' => $query,
+            'pagination' => false
         ]);
     }
 }

@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+// model
 import { Server } from 'src/app/models/server.model';
+import { Location } from 'src/app/models/location.model';
+
+// service
 import { ServersService } from 'src/app/services/servers.service';
+import { LocationsService } from 'src/app/services/locations.service';
 
 @Component({
   selector: 'app-servers',
@@ -12,6 +17,7 @@ export class ServersComponent implements OnInit {
   isLoadingResults = true;
 
   servers: Server[] = [];
+  locations: Location[] = [];
   currentPage = 1;
   pageCount = 0;
   totalCount = 0;
@@ -30,13 +36,14 @@ export class ServersComponent implements OnInit {
     ram: null
   };
 
-
   constructor(
-    public serverLocation: ServersService
+    public serverLocation: ServersService,
+    public locationsService: LocationsService
   ) { }
 
   ngOnInit(): void {
     this.loadData(this.currentPage);
+    this.loadLocationData();
   }
 
   /**
@@ -58,6 +65,21 @@ export class ServersComponent implements OnInit {
     this.serverLocation.list(page, search).subscribe((response) => {
       if (response) {
         this.servers = response.body;
+        this.pageCount = parseInt(response.headers.get('X-Pagination-Page-Count'), 10);
+        this.currentPage = parseInt(response.headers.get('X-Pagination-Current-Page'), 10);
+        this.totalCount = parseInt(response.headers.get('X-Pagination-Total-Count'), 10);
+      }
+      this.isLoadingResults = false;
+    }, err => {
+      console.log(err);
+      this.isLoadingResults = false;
+    });
+  }
+
+  loadLocationData() {
+    this.locationsService.listAll().subscribe((response) => {
+      if (response) {
+        this.locations = response.body;
         this.pageCount = parseInt(response.headers.get('X-Pagination-Page-Count'), 10);
         this.currentPage = parseInt(response.headers.get('X-Pagination-Current-Page'), 10);
         this.totalCount = parseInt(response.headers.get('X-Pagination-Total-Count'), 10);

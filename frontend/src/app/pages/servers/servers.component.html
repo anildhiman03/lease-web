@@ -1,14 +1,38 @@
-<div>
+<div class="container">
   <h1>Server List</h1>
   <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
 
-  <input type="text" [(ngModel)]="filters.location" placeholder="location">
-  <input type="text" [(ngModel)]="filters.model" placeholder="model">
-  <input type="text" [(ngModel)]="filters.type" placeholder="type">
-  <input type="text" [(ngModel)]="filters.storage" placeholder="storage">
-  <input type="text" [(ngModel)]="filters.ram" placeholder="ram">
-  <button (click)="loadData(1);">Submit</button>
-  <button (click)="resetFilter();" >Reset</button>
+  <div class="row filter">
+    <div class="col">
+      <select  [(ngModel)]="filters.location"  class="custom-select">
+        <option value="" selected>All</option>
+        <option [value]="location.location_id" *ngFor="let location of locations">{{location.location_name}}</option>
+      </select>
+    </div>
+    <div class="col">
+      <select  [(ngModel)]="filters.type"  class="custom-select">
+        <option value="" selected>All</option>
+        <option value="SAS">SAS</option>
+        <option value="SATA">SATA</option>
+        <option value="SSD">SSD</option>
+      </select>
+    </div>
+    <div class="col">
+      <input type="text" class="form-control" [(ngModel)]="filters.storage" placeholder="storage">
+    </div>
+    <div class="col">
+      <input type="text" class="form-control" [(ngModel)]="filters.model" placeholder="model">
+    </div>
+    <div class="col">
+      <input type="text" class="form-control" [(ngModel)]="filters.ram" placeholder="ram">
+    </div>
+    <div class="col">
+      <button type="button" class="btn btn-primary" (click)="loadData(1);">Filter</button>
+      <button type="button" class="btn btn-light" (click)="resetFilter();" >Reset</button>
+    </div>
+  </div>
+
+
 
   <table class="table table-bordered">
     <thead>
@@ -34,5 +58,7 @@
     </tr>
     </tbody>
   </table>
-  <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+  <nav aria-label="Page navigation example">
+    <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+  </nav>
 </div>

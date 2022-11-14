@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  path: 'http://localhost:8888/bawes/LeaseWeb/backend/api/web/v1'
+  path: 'http://localhost:8888/personal/lease-web/backend/api/web/v1'
 };
 
 /*

@@ -42,19 +42,12 @@ return [
             'rules' => [
                 [ // QueryController
                     'class' => 'yii\rest\UrlRule',
-                    'controller' => 'v1/query',
+                    'controller' => 'v1/server',
                     'pluralize' => false,
                     'patterns' => [
                         'GET' => 'list',
-                        'POST' => 'create',
-                        'GET list-solution/<query_uuid>' => 'list-solutions',
-                        'POST solution/<query_uuid>' => 'submit-solution',
-                        'GET <query_uuid>' => 'view',
                         // OPTIONS VERBS
                         'OPTIONS' => 'options',
-                        'OPTIONS <query_uuid>' => 'options',
-                        'OPTIONS solution/<query_uuid>' => 'options',
-                        'OPTIONS list-solution/<query_uuid>' => 'options'
                     ]
                 ],
                 [
@@ -63,9 +56,10 @@ return [
                     'controller' => 'v1/location',
                     'patterns' => [
                         'GET' => 'list',
+                        'GET list-all' => 'list-all',
                         // OPTIONS VERBS
                         'OPTIONS' => 'options',
-
+                        'OPTIONS list-all' => 'options',
                     ]
                 ],
             ],
