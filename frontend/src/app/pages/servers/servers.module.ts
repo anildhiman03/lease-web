@@ -5,17 +5,16 @@ import { ServersRoutingModule } from './servers-routing.module';
 import { ServersComponent } from './servers.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { LocationsRoutingModule } from '../locations/locations-routing.module';
-
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [ServersComponent],
   imports: [
     CommonModule,
-    ServersRoutingModule,
+    FormsModule,
     NgxPaginationModule,
     MatProgressSpinnerModule,
-    LocationsRoutingModule
+    ServersRoutingModule
   ]
 })
 export class ServersModule { }

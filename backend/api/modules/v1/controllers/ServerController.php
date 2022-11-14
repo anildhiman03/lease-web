@@ -90,7 +90,6 @@ class ServerController extends Controller {
             $query->filterByRam($ram);
         }
 
-        $query->select("server_model,server_ram,server_hard_disk_type,server_hard_disk_space,server_price,server_location_id");
         return new ActiveDataProvider([
             'query' => $query
         ]);

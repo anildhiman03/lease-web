@@ -9,7 +9,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let location of locations | paginate: { itemsPerPage: 10, currentPage: p ,totalItems : count}">
+    <tr *ngFor="let location of locations | paginate: { itemsPerPage: 10, currentPage: pageCount ,totalItems : totalCount}">
       <td>{{location.location_id}}</td>
       <td>{{location.location_name}}</td>
     </tr>

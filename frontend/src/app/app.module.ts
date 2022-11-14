@@ -5,16 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { HttpClientModule} from '@angular/common/http';
 import { HeaderComponent } from './pages/common/header/header.component';
-import { FooterComponent } from './pages/common/footer/footer.component'
-import { FlashMessagesModule } from "angular2-flash-messages";
+import { FooterComponent } from './pages/common/footer/footer.component';
+import { FlashMessagesModule } from 'angular2-flash-messages';
 import { ToastrModule } from 'ngx-toastr';
-import { TokenInterceptor } from './interceptor/token-interceptor';
-import { ErrorInterceptor } from './interceptor/error.interceptor';
 import { GuestComponent } from './pages/common/layouts/guest/guest.component';
 import { DashboardComponent } from './pages/common/layouts/dashboard/dashboard.component';
-import { MyMaterialModule } from './material.module';
 
 @NgModule({
   declarations: [
@@ -29,14 +26,9 @@ import { MyMaterialModule } from './material.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    // MyMaterialModule,
-    ToastrModule.forRoot(), // ToastrModule added
+    ToastrModule.forRoot(),
     FlashMessagesModule.forRoot(),
   ],
-  // providers: [
-  //   { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
-  //   { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
-  // ],
 
   bootstrap: [AppComponent]
 })

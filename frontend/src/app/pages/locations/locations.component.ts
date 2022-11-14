@@ -14,6 +14,7 @@ export class LocationsComponent implements OnInit {
   locations: Location[] = [];
   currentPage = 1;
   pageCount = 0;
+  totalCount = 0;
 
   constructor(
     public locationsService: LocationsService
@@ -25,7 +26,7 @@ export class LocationsComponent implements OnInit {
 
   /**
    * pagination page change
-   * @param $event
+   * @param $event use as pagination
    */
   pageChanged($event) {
     this.currentPage = $event;
@@ -33,8 +34,8 @@ export class LocationsComponent implements OnInit {
   }
 
   /**
-   * load data
-   * @param page
+   * @description load location data
+   * @param page use for pagination
    */
   loadData(page: number) {
     this.locationsService.list(page).subscribe((response) => {
@@ -42,6 +43,7 @@ export class LocationsComponent implements OnInit {
         this.locations = response.body;
         this.pageCount = parseInt(response.headers.get('X-Pagination-Page-Count'), 10);
         this.currentPage = parseInt(response.headers.get('X-Pagination-Current-Page'), 10);
+        this.totalCount = parseInt(response.headers.get('X-Pagination-Total-Count'), 10);
       }
       this.isLoadingResults = false;
     }, err => {

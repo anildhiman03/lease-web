@@ -21,15 +21,21 @@ export class ServersService {
 
   /**
    * list server record
-   * @param page
+   * @param page for pagination
+   * @param search for query param
    */
-  list(page: number): Observable<any> {
-    return this.httpClient.get(`${this.apiServer}/list?page=${page}`, this.httpOptions)
+  list(page: number, search: string): Observable<any> {
+    const url = `${this.apiServer}/list?page=${page}${search}&expand=serverLocation`;
+    return this.httpClient.get(url, this.httpOptions)
       .pipe(
         catchError(this.errorHandler)
       );
   }
 
+  /**
+   * handle error
+   * @param error pass error handle
+   */
   errorHandler(error) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {

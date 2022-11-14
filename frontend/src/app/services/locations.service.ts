@@ -21,7 +21,7 @@ export class LocationsService {
 
   /**
    * list record
-   * @param page
+   * @param page for pagination
    */
   list(page: number): Observable<any> {
     return this.httpClient.get(`${this.apiServer}/list?page=${page}`, this.httpOptions)
@@ -30,6 +30,10 @@ export class LocationsService {
       );
   }
 
+  /**
+   * handle error message
+   * @param error to pass err
+   */
   errorHandler(error) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {

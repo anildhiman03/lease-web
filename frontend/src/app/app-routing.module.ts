@@ -6,7 +6,7 @@ const routes: Routes = [
   {
     path: 'servers',
     component: DashboardComponent,
-    loadChildren: () => import('./pages/servers/servers-routing.module').then(m => m.ServersRoutingModule),
+    loadChildren: () => import('./pages/servers/servers.module').then(m => m.ServersModule),
   },
   {
     path: 'locations',
