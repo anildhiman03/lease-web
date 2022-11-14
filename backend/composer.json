@@ -1,0 +1,59 @@
+{
+    "name": "bawes/payroll",
+    "description": "Payroll Application for Studenthub Training Program",
+    "version": "1.2.2",
+    "keywords": ["payroll", "payment", "transfers"],
+    "homepage": "https://studenthub.co/",
+    "type": "project",
+    "minimum-stability": "dev",
+    "prefer-stable" : true,
+    "require": {
+        "php": ">=5.5.0",
+        "yiisoft/yii2": "~2.0.6",
+        "yiisoft/yii2-bootstrap": "~2.0.0",
+        "yiisoft/yii2-swiftmailer": "~2.0.0",
+        "yiisoft/yii2-imagine": "~2.0.0",
+        "yiisoft/yii2-httpclient": "^2.0",
+        "yiisoft/yii2-shell": "~2.0.0",
+        "aws/aws-sdk-php": "*",
+        "understeam/yii2-slack": "v0.3.0",
+        "openbuildings/swiftmailer-css-inliner": "*",
+        "moonlandsoft/yii2-phpexcel": "*",
+        "kartik-v/yii2-mpdf": "dev-master",
+        "2amigos/qrcode-library" : "^1.0",
+        "guzzlehttp/guzzle": "*",
+        "php-http/guzzle6-adapter": "^2.0",
+        "notamedia/yii2-sentry": "^1.5",
+        "algolia/algoliasearch-client-php": "^2.4",
+        "cloudinary/cloudinary_php": "^1.8",
+        "php-ffmpeg/php-ffmpeg": "^0.16.0",
+        "mixpanel/mixpanel-php": "^2.8",
+        "spatie/browsershot": "^3.40",
+        "segmentio/analytics-php": "^2.0",
+        "understeam/yii2-jira": "^0.3.0"
+    },
+    "require-dev": {
+        "yiisoft/yii2-debug": "~2.0.0",
+        "yiisoft/yii2-gii": "~2.0.0",
+        "yiisoft/yii2-faker": "~2.0.0",
+        "codeception/base": "^2.2.3",
+        "codeception/verify": "~0.3.1",
+        "codeception/specify": "~0.4.6"
+    },
+    "config": {
+        "process-timeout": 1800,
+        "fxp-asset": {
+            "enabled": false
+        },
+        "allow-plugins": {
+            "yiisoft/yii2-composer": true,
+            "composer/package-versions-deprecated": true
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ]
+}
